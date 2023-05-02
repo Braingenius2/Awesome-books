@@ -1,69 +1,97 @@
- let books=[
-    {
-        title:'Lorem',
-        author:'Testeroo Testyy'
+// define books as a collection of arrays
+let books=[
+  {
+    title:'Lorem',
+    author:'Testeroo Testyy',
+  },
+  {
+    title:'Lorem',
+    author:'Testeroo Testyy',
+  },
+  {
+    title:'Lorem',
+    author:'Testeroo Testyy',
+  }
+]
 
-    },
-    {
-        title:'Lorem',
-        author:'Testeroo Testyy'
+// Get DOM elements
+const bookListElement = document.getElementById("book-list");
+const addBookElement = document.getElementById("add-book");
+const addButtonElement = document.getElementById("add-btn");
+const removeButtonElement = document.getElementById("remove-btn");
+const titleInputElement = document.getElementById("title-input");
+const authorInputElement = document.getElementById("author-input");
 
-    },
-    {
-        title:'Lorem',
-        author:'Testeroo Testyy'
+// const title=document.getElementById('title-input').value
+// const author=document.getElementById('title-input').value
 
+function addBook(title, author) {
+  const book = {
+    title: title,
+    author: author,
+  }
+  books.push(book);
+  localStorage.setItem("books", JSON.stringify(books));
+}
+
+function removeBook(title, author){
+  const books = books.filter(function(value){
+    if(value[title]!==title && value[author]!==author){
+    return value;
     }
- ]
-const title=document.getElementById('title-input').value
-const author=document.getElementById('title-input').value
-function addBook(){
-    books.push({
-    title:title,
-    author:author
-})
-}
-function removeBook(){
-    let books=books.filter(function(value){
-        if(value[title]!==title && value[author]!==author){
-               return value;
-        }
-    })
+    localStorage.setItem("books", JSON.stringify(books));
+  });
 
 }
 
-function createBookList(books){
-    books.forEach(element => {
-        const bookList = document.createElement('section');
-        const book = document.createElement('div');
-        const paragraph = document.createElement('p');
-        const title = document.createElement('span');
-        title.classList.add('title');
-        title.innerHTML = element[title];
-        const breakLine = document.createElement('br');
-        const author = document.createElement('span');
-        author.classList.add('author');
-        author.innerHTML = element[author];
-        const removeButton = document.createElement('button');
-        removeButton.classList.add('remove-btn');
-        const hr = document.createElement('hr');
+function displayBookList() {
+  // Clear the book list element
+  bookListElement.innerHTML = "";
 
-        bookList.appendChild(book);
-        book.appendChild(paragraph);
-        paragraph.appendChild(title);
-        paragraph.appendChild(breakLine);
-        paragraph.appendChild(author);
-        book.appendChild(removeButton);
-    });
+  // Loop through the book collection and create a new element for each book
+  books.forEach(function (book, index) {
+    const bookElement = document.createElement("div");
+    bookElement.innerHTML = `<p><span class="title">${book.title}</span><br><span class="author">${book.author}</span></p>`;
+
+    // set custom data-index attribute on the div element using its dataset property
+    // assign the index of the current book object to it
+    // This data-index attribute is used to keep track of the index of each book in the book list, so that the correct book can be removed when the user clicks the "Remove" button.
+    bookElement.dataset.index = index;
+    bookListElement.appendChild(bookElement);
+  });
 }
 
-function displayBooks(){
-    const main = document.querySelector('main');
-    createBookList();
-    main.appendChild()
-    
+// Check if there is any data in localStorage and load it
+if (localStorage.getItem("books")) {
+  books = JSON.parse(localStorage.getItem("books"));
 }
 
+// Event listener for the add book button
+addButtonElement.addEventListener("click", function (event) {
+  event.preventDefault();
+  
+  // Get the values from the input fields
+  const title = titleInputElement.value;
+  const author = authorInputElement.value;
 
+  // Add the book to the collection
+  addBook(title, author);
 
-displayBooks(books)
+  // Clear the input fields
+  titleInputElement.value = "";
+  authorInputElement.value = "";
+
+  // Display the updated book list
+  displayBookList();
+});
+  
+// Event listener for the remove book button
+removeButtonElement.addEventListener("click", function () {
+  // invoke the removebook function
+  removeBook();
+
+  // Display the updated book list
+  displayBookList();
+});
+
+displayBookList();
