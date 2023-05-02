@@ -1,16 +1,19 @@
 // define books as a collection of arrays
-let books=[
+let books = [
   {
-    title:'Lorem',
-    author:'Testeroo Testyy',
+    id: 1,
+    title: 'Lorem',
+    author: 'Testeroo Testyy',
   },
   {
-    title:'Lorem',
-    author:'Testeroo Testyy',
+    id: 2,
+    title: 'Ipsum',
+    author: 'Testeroo Testyy',
   },
   {
-    title:'Lorem',
-    author:'Testeroo Testyy',
+    id: 3,
+    title: 'Dolor',
+    author: 'Testeroo Testyy',
   }
 ]
 
@@ -22,11 +25,9 @@ const removeButtonElement = document.getElementById("remove-btn");
 const titleInputElement = document.getElementById("title-input");
 const authorInputElement = document.getElementById("author-input");
 
-// const title=document.getElementById('title-input').value
-// const author=document.getElementById('title-input').value
-
 function addBook(title, author) {
   const book = {
+    id: books.length + 1,
     title: title,
     author: author,
   }
@@ -34,14 +35,11 @@ function addBook(title, author) {
   localStorage.setItem("books", JSON.stringify(books));
 }
 
-function removeBook(title, author){
-  const books = books.filter(function(value){
-    if(value[title]!==title && value[author]!==author){
-    return value;
-    }
-    localStorage.setItem("books", JSON.stringify(books));
+function removeBook(id) {
+  books = books.filter(function(book) {
+    return book.id !== id;
   });
-
+  localStorage.setItem("books", JSON.stringify(books));
 }
 
 function displayBookList() {
@@ -52,11 +50,17 @@ function displayBookList() {
   books.forEach(function (book, index) {
     const bookElement = document.createElement("div");
     bookElement.innerHTML = `<p><span class="title">${book.title}</span><br><span class="author">${book.author}</span></p>`;
-
-    // set custom data-index attribute on the div element using its dataset property
-    // assign the index of the current book object to it
-    // This data-index attribute is used to keep track of the index of each book in the book list, so that the correct book can be removed when the user clicks the "Remove" button.
-    bookElement.dataset.index = index;
+    bookElement.id = `book-${book.id}`;
+    const removeButton = document.createElement("button");
+    removeButton.textContent = "Remove";
+    removeButton.dataset.id = book.id;
+    removeButton.addEventListener("click", function(event) {
+      const id = event.target.dataset.id;
+      removeBook(id);
+      const bookElement = document.getElementById(`book-${id}`);
+      bookListElement.removeChild(bookElement);
+    });
+    bookElement.appendChild(removeButton);
     bookListElement.appendChild(bookElement);
   });
 }
@@ -69,7 +73,7 @@ if (localStorage.getItem("books")) {
 // Event listener for the add book button
 addButtonElement.addEventListener("click", function (event) {
   event.preventDefault();
-  
+
   // Get the values from the input fields
   const title = titleInputElement.value;
   const author = authorInputElement.value;
@@ -84,14 +88,6 @@ addButtonElement.addEventListener("click", function (event) {
   // Display the updated book list
   displayBookList();
 });
-  
-// Event listener for the remove book button
-removeButtonElement.addEventListener("click", function () {
-  // invoke the removebook function
-  removeBook();
-
-  // Display the updated book list
-  displayBookList();
-});
 
 displayBookList();
+  
