@@ -165,7 +165,7 @@ Example:
 
 - GitHub: [@beteland123](https://github.com/beteland123)
 - Twitter: [@twitterhandle]()
-- LinkedIn: [LinkedIn]()
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/betel-andarge-1b9446223)
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -185,7 +185,7 @@ Example:
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](../../issues/).
+Feel free to check the [issues page](https://github.com/Braingenius2/Awesome-books/issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
