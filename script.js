@@ -39,7 +39,9 @@ function removeBook(id) {
   books = books.filter(function(book) {
     return book.id !== id;
   });
-  localStorage.setItem("books", JSON.stringify(books));
+  let localStorageBooks = JSON.parse(localStorage.getItem('books'));
+  localStorageBooks = localStorageBooks.filter((obj) => obj.id !== parseInt(id, 10));
+  localStorage.setItem("books", JSON.stringify(localStorageBooks));
 }
 
 function displayBookList() {
