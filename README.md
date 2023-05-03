@@ -139,7 +139,7 @@ Example command:
 
 ### Deployment
 
-You can deploy this project using:
+N/A
 
 <!--
 Example:
