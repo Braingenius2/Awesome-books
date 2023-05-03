@@ -70,4 +70,3 @@ addButtonElement.addEventListener('click', (event) => {
   // Display the updated book list
   booksObj.displayBookList();
 });
-displayBookList();
