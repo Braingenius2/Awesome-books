@@ -48,7 +48,7 @@
 //   books.forEach((book) => {
 //     const bookElement = document.createElement('div');
 //     bookElement.innerHTML = `<p><span class="title">${book.title}</span><br>
-//     <span class="author">${book.author}</span></p>`;
+//<span class="author">${book.author}</span></p>`;
 //     bookElement.id = `book-${book.id}`;
 //     const removeButton = document.createElement('button');
 //     removeButton.textContent = 'Remove';
@@ -159,3 +159,4 @@ addButtonElement.addEventListener('click', (event) => {
   // Display the updated book list
   displayBookList();
 });
+displayBookList();
