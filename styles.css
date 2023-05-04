@@ -14,10 +14,10 @@ main {
 }
 
 #book-list {
+  align-items: center;
   margin-top: 2em;
   display: flex;
   flex-direction: column;
- 
   width: 95%;
 }
 #booksContainer{
@@ -44,7 +44,7 @@ hr {
 
 #booksContainer div {
   display: flex;
-  padding: 0 8px;
+  padding:  8px;
   justify-content: space-between;
 }
 
@@ -100,4 +100,10 @@ hr {
 }
 .contact ul li{
   list-style: initial;
+}
+.form{
+  width: 27%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
 }
