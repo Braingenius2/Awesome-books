@@ -2,7 +2,13 @@ const bookListElement = document.getElementById('book-list');
 const addButtonElement = document.getElementById('add-btn');
 const titleInputElement = document.getElementById('title-input');
 const authorInputElement = document.getElementById('author-input');
+const dateTime=document.querySelector('.date-time')
 
+let today = new Date();
+let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+let vardateTime = date+' '+time;
+dateTime.innerHTML=`${vardateTime}`
 class Books {
   constructor() {
     this.books = JSON.parse(localStorage.getItem('books') || '[]');

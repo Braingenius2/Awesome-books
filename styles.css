@@ -94,6 +94,7 @@ hr {
   display: flex;
   flex-direction: column;
   gap: 1em;
+  align-items: center;
 }
 .contact ul{
   padding: 1em 3.1em;
@@ -106,4 +107,8 @@ hr {
   display: flex;
   flex-direction: column;
   text-align: center;
+}
+.date-time{
+  display: flex;
+  justify-content: flex-end;
 }
