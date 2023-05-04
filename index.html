@@ -8,28 +8,51 @@
   <title>Awesome books</title>
 </head>
 <body>
-  <header></header>
+  <header>
+    <nav id="navbar">
+      <div id="logo">
+        <h2>Awesome Books</h2>
+      </div>
+      <ul id="nav-menu">
+        <li class="menu-item">List</li>
+        <li class="menu-item">Add new</li>
+        <li class="menu-item">Contact</li>
+      </ul>
+    </nav>
+  </header>
   <main>
-    <h1>All Awesome books</h1>
-    <section id="book-list"></section>
+    <section id="book-list">
+      <h1>All Awesome books</h1>
+    </section>
     <br>
-    <hr>
-    <h2>Add a new book</h2>
-    <form action="" method="post" id="add-book">
-      
-          <label for="title-input"></label>
-          <input type="text" id="title-input" placeholder="Title" required>
-          <br><br>
-          <label for="author-input"></label>
-          <input type="text" id="author-input" placeholder="Author" required>
-          <br><br>
-          <input type="button" value="Add" class="add" id="add-btn">
-         
-
-    </form>
-
+    <section>
+      <h2>Add a new book</h2>
+      <form action="" method="post" id="add-book">
+        
+            <label for="title-input"></label>
+            <input type="text" id="title-input" placeholder="Title" required>
+            <br><br>
+            <label for="author-input"></label>
+            <input type="text" id="author-input" placeholder="Author" required>
+            <br><br>
+            <input type="button" value="Add" class="add" id="add-btn">
+      </form>
+    </section>
+    <section>
+      <h2>Contact information</h2>
+      <p>Do you have any questins or just want to say "Hello"?<br>You can reach out to us!</p>
+      <ul>
+        <li>our e-mail: mail@mail.com</li>
+        <li>our phone number: 0043586534422</li>
+        <li>Our address: Streetname 22, 84503 City, Country</li>
+      </ul>
+    </section>
   </main>
-  <footer></footer>
+  <footer>
+    <section id="copyright">
+      <h2>Copyright</h2>
+    </section>
+  </footer>
   <script src="script.js"></script>
 </body>
 </html>
