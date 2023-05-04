@@ -27,10 +27,12 @@ class Books {
 
   displayBookList() {
     // Clear the book list element
-    bookListElement.innerHTML = '';
-
+    bookListElement.innerHTML = '<h2>All Awesome books</h2>';
+    const booksContainer = document.createElement('div');
+    booksContainer.id=`booksContainer`
     // Loop through the book collection and create a new element for each book
     this.books.forEach((book) => {
+      
       const bookElement = document.createElement('div');
       bookElement.innerHTML = `<p><span class="title">"${book.title}" by </span><span class="author">${book.author}</span></p>`;
       bookElement.id = `book-${book.id}`;
@@ -44,7 +46,8 @@ class Books {
         bookListElement.removeChild(bookElement);
       });
       bookElement.appendChild(removeButton);
-      bookListElement.appendChild(bookElement);
+      booksContainer.appendChild(bookElement)
+      bookListElement.appendChild(booksContainer);
     });
   }
 }
