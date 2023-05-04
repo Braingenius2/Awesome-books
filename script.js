@@ -153,7 +153,7 @@ class Book {
      // Loop through the book collection and create a new element for each book
      this.books.forEach((book) => {
        const bookElement = document.createElement('div');
-       bookElement.innerHTML = `<p><span class="title">${book.title}</span><br>
+       bookElement.innerHTML = `<p><span class="title">"${book.title}" by </span>
        <span class="author">${book.author}</span></p>`;
        bookElement.id = `book-${book.id}`;
        const removeButton = document.createElement('button');
