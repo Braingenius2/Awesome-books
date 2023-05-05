@@ -54,7 +54,7 @@ class Books {
         const { id } = event.target.dataset;
         this.removeBook(id);
         const bookElement = document.getElementById(`book-${id}`);
-        bookListElement.removeChild(bookElement);
+        booksContainer.removeChild(bookElement);
       });
       bookElement.appendChild(removeButton);
       booksContainer.appendChild(bookElement)
