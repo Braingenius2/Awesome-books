@@ -7,13 +7,13 @@ const addLink = document.querySelector('.add-link');
 const contactLink = document.querySelector('.contact-link');
 const formElement = document.getElementById('form');
 const contactElement = document.getElementById('contact');
-const dateTime=document.querySelector('.date-time');
+const dateTime = document.querySelector('.date-time');
 
-let today = new Date();
-let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-let vardateTime = date+' '+time;
-dateTime.innerHTML=`${vardateTime}`
+const today = new Date();
+const date = `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`;
+const time = `${today.getHours()}:${today.getMinutes()}:${today.getSeconds()}`;
+const vardateTime = `${date} ${time}`;
+dateTime.innerHTML = `${vardateTime}`;
 class Books {
   constructor() {
     this.books = JSON.parse(localStorage.getItem('books') || '[]');
@@ -40,10 +40,9 @@ class Books {
     // Clear the book list element
     bookListElement.innerHTML = '<h2>All Awesome books</h2>';
     const booksContainer = document.createElement('div');
-    booksContainer.id=`booksContainer`
+    booksContainer.id = 'booksContainer';
     // Loop through the book collection and create a new element for each book
     this.books.forEach((book) => {
-      
       const bookElement = document.createElement('div');
       bookElement.innerHTML = `<p><span class="title">"${book.title}" by </span><span class="author">${book.author}</span></p>`;
       bookElement.id = `book-${book.id}`;
@@ -57,7 +56,7 @@ class Books {
         booksContainer.removeChild(bookElement);
       });
       bookElement.appendChild(removeButton);
-      booksContainer.appendChild(bookElement)
+      booksContainer.appendChild(bookElement);
       bookListElement.appendChild(booksContainer);
     });
   }
@@ -87,19 +86,19 @@ addButtonElement.addEventListener('click', (event) => {
 
 // Event listeners for links on nav menu
 listLink.addEventListener('click', () => {
-  bookListElement.style.display = 'flex'
+  bookListElement.style.display = 'flex';
   formElement.style.display = 'none';
   contactElement.style.display = 'none';
-})
+});
 
 addLink.addEventListener('click', () => {
   bookListElement.style.display = 'none';
   formElement.style.display = 'flex';
   contactElement.style.display = 'none';
-})
+});
 
 contactLink.addEventListener('click', () => {
   bookListElement.style.display = 'none';
   formElement.style.display = 'none';
   contactElement.style.display = 'flex';
-})
+});
